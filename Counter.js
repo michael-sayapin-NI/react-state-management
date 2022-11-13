@@ -18,6 +18,11 @@ class Counter extends Component {
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.reset = this.reset.bind(this);
+    this.updateDocumentTitle = this.updateDocumentTitle.bind(this);
+  }
+
+  updateDocumentTitle() {
+    document.title = `Count: ${this.state.count}`;
   }
 
   /**
@@ -27,7 +32,7 @@ class Counter extends Component {
   increment() {
     this.setState({ count: this.state.count + 1 });
     this.setState({ count: this.state.count + 1 });
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ count: this.state.count + 1 }, this.updateDocumentTitle);
   }
 
   /**
@@ -40,6 +45,7 @@ class Counter extends Component {
     }, () => {
       console.log('After state change!', this.state);
       localStorage.setItem('counterState', JSON.stringify(this.state));
+      this.updateDocumentTitle();
     });
 
     console.log('Before state change!', this.state);
@@ -56,7 +62,7 @@ class Counter extends Component {
       }
 
       return { count: state.count - step }
-    });
+    }, this.updateDocumentTitle);
   }
 
   render() {
