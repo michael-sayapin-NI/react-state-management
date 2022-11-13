@@ -24,12 +24,17 @@ class Counter extends Component {
   }
 
   /**
-   * When we pass functions to setState(), React plays through each of them
+   * When we pass functions to setState(), React plays through each of them.
+   * The setState can receive a second argument, a callback function that will run after the state changes.
    */
   reset() {
     this.setState(() => {
-      return { count: 0};
+      return { count: 0 };
+    }, () => {
+      console.log('After state change!', this.state);
     });
+
+    console.log('Before state change!', this.state);
   }
 
   /**
