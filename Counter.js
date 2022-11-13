@@ -82,3 +82,23 @@ class Counter extends Component {
 }
 
 export default Counter;
+
+/**
+ *  SetState Patterns and Side notes:
+ *
+ *  1. Don't use 'this.state' for derivations of props, instead, derive computed properties directly from the
+ *  props themselves.
+ *  i.e:
+ *  DON'T =>
+ *  this.state = {
+ *    fullName: props.firstName + ' ' + props.lastName,
+ *  };
+ *  DO =>
+ *  const fullName = props.firstName + ' ' + props.lastName;
+ *
+ *  2. Don't clutter your render method, break it up to helper functions
+ *
+ *  3. Don't use state for things you're not going to render.
+ *
+ *  4. Set sensible defaults in the state
+ */
