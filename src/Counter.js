@@ -57,7 +57,7 @@ class Counter extends Component {
   decrement() {
     this.setState((state, props) => {
       const { max, step } = props;
-      if (state.count >= max) {
+      if (state.count <= max) {
         return;
       }
 

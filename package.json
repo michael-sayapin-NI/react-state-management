@@ -1,0 +1,45 @@
+{
+  "name": "react-state-management",
+  "version": "1.0.0",
+  "description": "State Management in Pure React V2, Frontend Masters Course",
+  "main": "App.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-sayapin-NI/react-state-management.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michael-sayapin-NI/react-state-management/issues"
+  },
+  "homepage": "https://github.com/michael-sayapin-NI/react-state-management#readme",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "node-sass": "^4.14.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "^3.2.0",
+    "use-query-params": "^2.1.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
