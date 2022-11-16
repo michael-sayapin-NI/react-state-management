@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
+/**
+ *
+ * @param {*} defaultValue
+ * @param {string} key
+ * @return {[unknown,((value: unknown) => void)]}
+ */
 const useLocalStorage = (defaultValue, key) => {
   const storage = localStorage.getItem(key);
   const initialValue = storage ? JSON.parse(storage).value : defaultValue;
@@ -19,6 +25,16 @@ const useLocalStorage = (defaultValue, key) => {
  */
 const Counter = ({ max, step }) => {
   const [count, setCount] = useLocalStorage(0, "count");
+  const countRef = useRef();
+
+  let message = "";
+  if (countRef.current < count) {
+    message = "Higher";
+  } else if (countRef.current > count) {
+    message = "lower";
+  }
+
+  countRef.current = count;
 
   const increment = () => {
     setCount((count) => {
@@ -40,8 +56,15 @@ const Counter = ({ max, step }) => {
     setCount(count);
   }, [count]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(`Count: ${count}`);
+    }, 3000);
+  }, [count]);
+
   return (
     <div className="Counter">
+      <p>{message}</p>
       <p className="count">{count}</p>
       <section className="controls">
         <button onClick={increment}>Increment</button>
