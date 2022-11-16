@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 
+/**
+ * @return {number}
+ */
 const getStateFromLocalStorage = () => {
   const storage = localStorage.getItem("counterState");
 
   if (storage) {
-    return JSON.parse(storage);
+    return JSON.parse(storage).count;
   }
 
-  return { count: 0 };
+  return 0;
+};
+/**
+ * @param {number} count
+ */
+const storeStateInLocalStorage = (count) => {
+  localStorage.setItem("counterState", JSON.stringify({ count }));
 };
 
 /**
@@ -16,7 +25,7 @@ const getStateFromLocalStorage = () => {
  * @param {number} props.step
  */
 const Counter = ({ max, step }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(getStateFromLocalStorage());
 
   const increment = () => {
     setCount((count) => {
@@ -32,6 +41,10 @@ const Counter = ({ max, step }) => {
 
   useEffect(() => {
     document.title = `Counter: ${count}`;
+  }, [count]);
+
+  useEffect(() => {
+    storeStateInLocalStorage(count);
   }, [count]);
 
   return (
