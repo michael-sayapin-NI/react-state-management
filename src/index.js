@@ -5,14 +5,14 @@ import Counter from './Counter';
 
 import './styles.scss';
 
-const App = () => {
+const Index = () => {
   return (
     <main className="Application">
       <section className="Counters">
-        <Counter max={-15} step={1} />
+        <Counter max={10} step={1} />
       </section>
     </main>
   );
 };
 
-render(<App />, document.getElementById('root'));
+render(<Index />, document.getElementById('root'));
